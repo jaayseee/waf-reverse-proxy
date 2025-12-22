@@ -1,0 +1,36 @@
+{
+  "mode": "block",
+  "rules": [
+    {
+      "id": "SQLI_BASIC",
+      "description": "Detect common SQL injection tokens",
+      "targets": ["path", "query", "body"],
+      "pattern": "(?i)(\\bunion\\b.*\\bselect\\b|\\bor\\b\\s+1=1|--|/\\*|\\*/|\\bdrop\\b\\s+\\btable\\b|\\bsleep\\s*\\()",
+      "action": "BLOCK",
+      "severity": "HIGH",
+      "tags": ["sqli"]
+    },
+    {
+      "id": "XSS_BASIC",
+      "description": "Detect common XSS injection patterns",
+      "targets": ["path", "query", "body"],
+      "pattern": "(?i)(<\\s*script|onerror\\s*=|onload\\s*=|javascript:|<\\s*iframe)",
+      "action": "BLOCK",
+      "severity": "HIGH",
+      "tags": ["xss"]
+    },
+    {
+      "id": "TRAVERSAL_BASIC",
+      "description": "Detect path traversal attempts",
+      "targets": ["path", "query"],
+      "pattern": "(\\.\\./|\\.\\.\\\\|%2e%2e%2f|%2e%2e%5c)",
+      "action": "BLOCK",
+      "severity": "MEDIUM",
+      "tags": ["traversal"]
+    }
+  ],
+  "allowlist": {
+    "ip": ["127.0.0.1"],
+    "paths": ["/admin/stats"]
+  }
+}
