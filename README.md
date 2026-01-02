@@ -113,7 +113,7 @@ Tests
 Run unit tests:
 .venv/bin/python -m pytest -v
 
-Screenshots
+## Screenshots
 /waf-reverse-proxy/assets/test_passed.png
 /waf-reverse-proxy/assets/waf_blocked_429.png
 /waf-reverse-proxy/assets/report.png
