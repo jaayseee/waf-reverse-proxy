@@ -27,7 +27,7 @@ It inspects HTTP requests for common web attack indicators (SQLi / XSS / path tr
 
 ## Architecture (local)
 
-```text
+
 Client (curl/browser)
         |
         v
