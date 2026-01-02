@@ -38,7 +38,7 @@ Backend App        http://127.0.0.1:5000
 
 
 
-Tech Stack
+## Tech Stack
 
 Python 3.12+
 FastAPI + Uvicorn
@@ -46,7 +46,7 @@ httpx
 pytest
 
 
-Getting Started (macOS)
+## Getting Started (macOS)
 1) Setup environment + install dependencies
 python3 -m venv .venv
 source .venv/bin/activate
@@ -64,7 +64,7 @@ uvicorn app.waf:app --host 127.0.0.1 --port 8080 --reload
 
 
 
-Demo Commands
+## Demo Commands
 Allowed requests (forwarded to backend)
 curl http://127.0.0.1:8080/; echo
 curl "http://127.0.0.1:8080/search?q=hello"; echo
@@ -121,7 +121,7 @@ Screenshots
 /waf-reverse-proxy/assets/waf_report.html
 
 
-What I learned
+## What I learned
 
 How a reverse proxy inspects and forwards HTTP traffic
 Why WAFs face false positives and need tuning (LOG mode)
@@ -130,7 +130,7 @@ SOC-style reporting (JSONL → HTML report)
 Hot reloading config without restarts
 
 
-Future Improvements
+## Future Improvements
 
 Add deeper request normalization/canonicalization
 Add rule packs inspired by OWASP CRS
@@ -139,7 +139,7 @@ Dockerize (one-command run)
 Add CI (GitHub Actions) to run pytest on every push
 
 
-Disclaimer
+## Disclaimer
 
 This project is for learning and defensive demonstration only.
 Do not use it to attack systems or bypass security controls.
