@@ -114,11 +114,11 @@ Run unit tests:
 .venv/bin/python -m pytest -v
 
 ## Screenshots
-/waf-reverse-proxy/assets/test_passed.png
-/waf-reverse-proxy/assets/waf_blocked_429.png
-/waf-reverse-proxy/assets/report.png
-/waf-reverse-proxy/assets/report2.png
-/waf-reverse-proxy/assets/waf_report.html
+- /waf-reverse-proxy/assets/test_passed.png
+- /waf-reverse-proxy/assets/waf_blocked_429.png
+- /waf-reverse-proxy/assets/report.png
+- /waf-reverse-proxy/assets/report2.png
+- /waf-reverse-proxy/assets/waf_report.html
 
 
 ## What I learned
