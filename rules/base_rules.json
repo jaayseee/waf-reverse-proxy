@@ -1,36 +1,47 @@
 {
-  "mode": "block",
+  "allowlist": {
+    "ip": [],
+    "paths": ["/admin/stats"]
+  },
+  "denylist": {
+    "ip": []
+  },
   "rules": [
     {
       "id": "SQLI_BASIC",
-      "description": "Detect common SQL injection tokens",
+      "description": "Basic SQL injection indicators",
       "targets": ["path", "query", "body"],
-      "pattern": "(?i)(\\bunion\\b.*\\bselect\\b|\\bor\\b\\s+1=1|--|/\\*|\\*/|\\bdrop\\b\\s+\\btable\\b|\\bsleep\\s*\\()",
-      "action": "BLOCK",
+      "pattern": "(?i)(union\\s+select|\\bor\\b\\s+\\d+=\\d+|--|/\\*|\\*/|drop\\s+table)",
+      "action": "LOG",
       "severity": "HIGH",
       "tags": ["sqli"]
     },
     {
       "id": "XSS_BASIC",
-      "description": "Detect common XSS injection patterns",
+      "description": "Basic XSS indicators",
       "targets": ["path", "query", "body"],
-      "pattern": "(?i)(<\\s*script|onerror\\s*=|onload\\s*=|javascript:|<\\s*iframe)",
+      "pattern": "(?i)(<\\s*script|javascript:|onerror\\s*=|onload\\s*=|<\\s*iframe)",
       "action": "BLOCK",
       "severity": "HIGH",
       "tags": ["xss"]
     },
     {
       "id": "TRAVERSAL_BASIC",
-      "description": "Detect path traversal attempts",
+      "description": "Path traversal indicators",
       "targets": ["path", "query"],
-      "pattern": "(\\.\\./|\\.\\.\\\\|%2e%2e%2f|%2e%2e%5c)",
+      "pattern": "(\\.\\./|%2e%2e%2f|\\.\\.\\\\|%2e%2e%5c)",
       "action": "BLOCK",
       "severity": "MEDIUM",
       "tags": ["traversal"]
+    },
+    {
+      "id": "SUSPICIOUS_USER_AGENT",
+      "description": "Log suspicious user agents (tuning rule — do not block)",
+      "targets": ["headers"],
+      "pattern": "(?i)(sqlmap|nikto|acunetix)",
+      "action": "LOG",
+      "severity": "LOW",
+      "tags": ["tuning", "headers"]
     }
-  ],
-  "allowlist": {
-    "ip": ["127.0.0.1"],
-    "paths": ["/admin/stats"]
-  }
+  ]
 }
